@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Middleware\Admin;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Back\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +18,20 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('users', UserController::class);
+
+
+Route::middleware([Admin::class])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::name('admin')->get('/', [UserController::class, 'index']);
+        Route::resource('users', UserController::class);
+    });
+});
+

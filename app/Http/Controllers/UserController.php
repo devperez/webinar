@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $users = User::latest()->paginate(10);
 
-        return view('admin.index', compact('users'))->with(request()->input('page'));
+        return view('back.index', compact('users'))->with(request()->input('page'));
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('back.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller
             'name'=>'required',
             'password'=>'required',
             'email'=>'required',
-            'is_admin'=>'sometimes|required',
+            'is_admin'=>'required',
         ]);
         
         //new user creation in database
@@ -62,7 +62,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.show', compact('user'));
+        return view('back.show', compact('user'));
     }
 
     /**
@@ -71,9 +71,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('back.edit', compact('user'));
     }
 
     /**
@@ -83,9 +83,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+       //dd($request);
+        $request->validate([
+            'firstname'=>'required',
+            'name'=>'required',
+            'password'=>'required',
+            'email'=>'required',
+            'is_admin'=>'unrequired',
+        ]);
+        //dd($request);
+        //user update in database
+           $user->update($request->all());
+
+        //redirect and message
+
+            return redirect()->route('users.index')->with('success', 'L\'utilisateur a été mis à jour avec succès.');
     }
 
     /**

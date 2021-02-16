@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@extends('navigation-menu')
-@section('content')
+@extends('back.layout')
+
+@section('main')
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -58,5 +58,6 @@
     </div>
 
 </form>
+
 
 @endsection
