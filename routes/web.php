@@ -4,6 +4,7 @@ use App\Http\Middleware\Admin;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FilesController;
 use App\Http\Controllers\Back\AdminController;
 
 /*
@@ -32,6 +33,8 @@ Route::middleware([Admin::class])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::name('admin')->get('/', [UserController::class, 'index']);
         Route::resource('users', UserController::class);
+        
+        
     });
 });
 

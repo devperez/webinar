@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -39,15 +40,21 @@ class UserController extends Controller
     {
         //Input validation
         $request->validate([
-            'firstname'=>'required',
-            'name'=>'required',
-            'password'=>'required',
+            'firstname'=>'required|max:255',
+            'name'=>'required|max:255',
+            'password'=> 'required',
             'email'=>'required',
             'is_admin'=>'required',
         ]);
         
         //new user creation in database
-            User::create($request->all());
+            User::create([
+                'firstname'=>$request->firstname,
+                'name'=>$request->name,
+                'password'=> Hash::make($request->password),
+                'email'=>$request->email,
+                'is_admin'=>$request->is_admin,
+            ]);
 
         //redirect and message
 
