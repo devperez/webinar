@@ -132,9 +132,9 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
             class="fas fa-th-large"></i></a>
-      </li>-->
+      </li>
     </ul>
-    </nav>
+    </nav>-->
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -148,11 +148,11 @@
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
+          <!-- <div class="image">
             <img src="/adminlte/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
+          </div>-->
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">{{ Auth::user()->firstname }} {{ Auth::user()-> name}}</a>
           </div>
         </div>
         <!-- Sidebar Menu -->
@@ -170,7 +170,7 @@
               <a href="{{ route('users.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-alt"></i>
                 <p>
-                  Utilisateurs
+                  Importer un fichier csv
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -226,14 +226,15 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Starter Page</h1>
+              <!-- <h1 class="m-0 text-dark">Starter Page</h1>-->
             </div><!-- /.col -->
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">Starter Page</li>
               </ol>
-            </div><!-- /.col -->
+            </div>-->
+            <!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
@@ -263,7 +264,7 @@
         Anything you want
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2021 <a href="https://bmvcom.eu/">BMV Communication</a>.</strong>
     </footer>
   </div>
   <!-- ./wrapper -->

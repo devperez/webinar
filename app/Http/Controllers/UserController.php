@@ -35,7 +35,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         //Input validation
         $request->validate([
@@ -85,18 +85,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-       //dd($request);
         $request->validate([
             'firstname'=>'required',
             'name'=>'required',
             'password'=>'required',
             'email'=>'required',
-            'is_admin'=>'unrequired',
+            'is_admin'=>'boolean',
         ]);
-        //dd($request);
+        //$admin = ($request['is_admin']);
+        //dd($admin);
         //user update in database
            $user->update($request->all());
-
         //redirect and message
 
             return redirect()->route('users.index')->with('success', 'L\'utilisateur a été mis à jour avec succès.');
@@ -108,8 +107,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        //delete the user
+        $user->delete();
+
+        //redirect and message
+        return redirect()->route('users.index')->with('success', 'L\'utilisateur a été supprimé avec succès.');
+
     }
 }

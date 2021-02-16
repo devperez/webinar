@@ -8,27 +8,28 @@
             <h2>Éditer un utilisateur</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}" style="color:white; text-decoration:none; float: right;">Retour</a>
+            <a class="btn btn-primary" href="{{ route('users.index') }}"
+                style="color:white; text-decoration:none; float: right;">Retour</a>
         </div>
     </div>
 </div>
 
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Aïe !</strong> Il y a un problème avec vos données.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <strong>Aïe !</strong> Il y a un problème avec vos données.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 <form action="{{ route('users.update',$user->id) }}" method="POST">
     @csrf
     @method('PUT')
 
-     <div class="row">
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nom:</strong>
@@ -56,11 +57,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Cette personne a les droits administrateur</strong>
-                <input type="checkbox" value="1" name="is_admin">
+                <input type="checkbox" value="1" name="is_admin"><br />
+                <strong>Cette personne n'a pas les droits administrateur</strong>
+                <input type="checkbox" value="0" name="is_admin">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-          <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
     </div>
 

@@ -48,8 +48,9 @@
             </div>
             <div class="form-group">
                 <strong>Cette personne a les droits administrateur</strong>
-                <input type="checkbox" value="1" name="is_admin">
-                <input type="hidden" value="0" name="is_admin">
+                <input type="checkbox" value="1" name="is_admin"><br />
+                <strong>Cette personne n'a pas les droits administrateur</strong>
+                <input type="checkbox" value="0" name="is_admin">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

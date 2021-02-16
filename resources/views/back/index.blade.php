@@ -22,7 +22,7 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
+        <th>Prénom</th>
         <th>Nom</th>
         <th>Email</th>
         <th>Admin</th>
@@ -30,10 +30,14 @@
     </tr>
     @foreach ($users as $user)
     <tr>
-        <td>{{ $user->id }}</td>
+        <td>{{ $user->firstname }}</td>
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
-        <td>{{ $user->is_admin }}</td>
+        <td>@if ($user->is_admin == 0)
+            Utilisateur
+            @else
+            Administrateur
+            @endif</td>
         <td>
             <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                 <a class="btn btn-info" style="color:white; text-decoration:none;"
