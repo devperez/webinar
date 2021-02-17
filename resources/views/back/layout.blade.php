@@ -167,7 +167,7 @@
               </a>
             </li>
             <li class="nav-item has-treeview">
-              <a href="{{ route('users.index') }}" class="nav-link">
+              <a href="{{ route('importcsv') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-alt"></i>
                 <p>
                   Importer un fichier csv
@@ -208,7 +208,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('logout') }}" class="nav-link">
                 <i class="nav-icon fas fa-store"></i>
                 <p>Déconnexion</p>
               </a>

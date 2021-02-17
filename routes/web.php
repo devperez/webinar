@@ -4,8 +4,8 @@ use App\Http\Middleware\Admin;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FilesController;
 use App\Http\Controllers\Back\AdminController;
+use App\Http\Controllers\SimpleExcelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +33,11 @@ Route::middleware([Admin::class])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::name('admin')->get('/', [UserController::class, 'index']);
         Route::resource('users', UserController::class);
+        Route::get('/login', [AdminController::class, 'logout'])->name('logout');
         
-        
+        //Import csv File
+        Route::get('simple-excel/import', [SimpleExcelController::class, 'index'])->name('importcsv');
+        Route::post('simple-excel/import', [SimpleExcelController::class, 'import'])->name('excel.import');
     });
 });
 
